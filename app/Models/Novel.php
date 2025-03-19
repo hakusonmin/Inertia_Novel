@@ -12,8 +12,8 @@ class Novel extends Model
 
     protected $fillable = ['chapter_id', 'content', 'title'];
 
-    public function chapter()
+    public function chapters()
     {
-        return $this->belongsTo(Chapter::class);
+        return $this->hasMany(Chapter::class);
     }
 }

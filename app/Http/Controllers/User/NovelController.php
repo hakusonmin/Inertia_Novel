@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use App\Models\Novel;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class NovelController extends Controller
 {
@@ -13,7 +14,8 @@ class NovelController extends Controller
      */
     public function index()
     {
-        //
+        $novels = Novel::with('chapters')->get();
+        return Inertia::render('User/Novel/Index', ['novels' => $novels]);
     }
 
     /**
@@ -21,7 +23,7 @@ class NovelController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -29,7 +31,8 @@ class NovelController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Novel::create($request->validated());
+        return redirect()->route('novels.index')->with('success', '小説を作成しました');
     }
 
     /**
@@ -53,7 +56,8 @@ class NovelController extends Controller
      */
     public function update(Request $request, Novel $novel)
     {
-        //
+        $novel->update($request->validated());
+        return redirect()->route('novels.index')->with('success', '小説を更新しました');
     }
 
     /**
@@ -61,6 +65,7 @@ class NovelController extends Controller
      */
     public function destroy(Novel $novel)
     {
-        //
+        $novel->delete();
+        return redirect()->route('novels.index')->with('success', '小説を削除しました');
     }
 }
