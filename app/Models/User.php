@@ -52,4 +52,9 @@ class User extends Authenticatable
     {
         return $this->is_admin;
     }
+
+    public function novels()
+    {
+        return $this->hasMany(Novel::class);
+    }
 }
