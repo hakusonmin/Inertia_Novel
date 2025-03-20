@@ -17,6 +17,9 @@
             <li>
               <Link href="/">ユーザーホーム</Link>
             </li>
+            <li>
+              <Link :href="route('logout')" method="post" as="button"> Log out </Link>
+            </li>
           </ul>
         </nav>
       </div>
@@ -81,10 +84,10 @@ onMounted(() => {
 .main-wrapper {
   flex: 1;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   width: 100%;
+  background-color: rgb(233,229,222);
 }
 
 header {
