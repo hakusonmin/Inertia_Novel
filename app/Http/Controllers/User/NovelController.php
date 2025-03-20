@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreNovelRequest;
+use App\Http\Requests\UpdateNovelRequest;
 use App\Models\Novel;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
 class NovelController extends Controller
@@ -14,7 +16,7 @@ class NovelController extends Controller
      */
     public function index()
     {
-        $novels = Novel::with('chapters')->get();
+        $novels = Novel::all();
         return Inertia::render('User/Novel/Index', ['novels' => $novels]);
     }
 
@@ -23,15 +25,18 @@ class NovelController extends Controller
      */
     public function create()
     {
-
+        return Inertia::render('User/Novel/Create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreNovelRequest $request)
     {
-        Novel::create($request->validated());
+        Novel::create([
+            'title' => $request->title,
+            'user_id' => Auth::id(),
+        ]);
         return redirect()->route('novels.index')->with('success', '小説を作成しました');
     }
 
@@ -54,7 +59,7 @@ class NovelController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Novel $novel)
+    public function update(UpdateNovelRequest $request, Novel $novel)
     {
         $novel->update($request->validated());
         return redirect()->route('novels.index')->with('success', '小説を更新しました');

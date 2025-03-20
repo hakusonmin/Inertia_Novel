@@ -14,13 +14,12 @@ defineProps({
       <ul>
         <li v-for="novel in novels" :key="novel.id">
           <h2>{{ novel.title }}</h2>
-          <ul>
-            <li v-for="chapter in novel.chapters" :key="chapter.id">
-              <h3>{{ chapter.title }}</h3>
-            </li>
-          </ul>
         </li>
       </ul>
     </div>
   </Layout>
 </template>
+
+<style scoped>
+
+</style>

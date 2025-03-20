@@ -3,6 +3,7 @@
 use App\Http\Controllers\User\ArticleController;
 use App\Http\Controllers\User\ChapterController;
 use App\Http\Controllers\User\NovelController;
+use App\Http\Controllers\User\UserController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -20,4 +21,6 @@ Route::middleware(['auth'])->group(function () {
     Route::prefix('chapters/{chapter}')->group(function () {
         Route::resource('articles', ArticleController::class);
     });
+
+    Route::get('/users', [UserController::class, 'index'])->name('users.index');
 });

@@ -4,7 +4,7 @@
     <header>
       <div class="header-container">
         <h2 class="site-title">
-          <Link href="/">大学図書館座席管理システム</Link>
+          <Link href="/">小説投稿サイト</Link>
         </h2>
         <nav>
           <ul>

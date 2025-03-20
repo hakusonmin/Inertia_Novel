@@ -10,10 +10,10 @@ class Article extends Model
     /** @use HasFactory<\Database\Factories\ArticleFactory> */
     use HasFactory;
 
-    protected $fillable = ['title', 'user_id'];
+    protected $fillable = ['title', 'content', 'chapter_id'];
 
-    public function user()
+    public function chapter()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Chapter::class);
     }
 }
