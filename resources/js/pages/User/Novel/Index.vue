@@ -1,5 +1,5 @@
 <script setup>
-import Layout from '@/layouts/Layout.vue';
+import Layout from '@/mycomponents/layouts/Layout.vue';
 import { defineProps } from 'vue';
 
 defineProps({
