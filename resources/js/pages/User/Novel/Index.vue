@@ -11,9 +11,9 @@ defineProps({
   <Layout>
     <div>
       <h1>小説一覧</h1>
-      <ul class="m-10 flex">
+      <ul>
         <li v-for="novel in novels" :key="novel.id">
-          <h2 class="m-2">{{ novel.title }}</h2>
+          <h2>{{ novel.title }}</h2>
           <ul>
             <li v-for="chapter in novel.chapters" :key="chapter.id">
               <h3>{{ chapter.title }}</h3>
