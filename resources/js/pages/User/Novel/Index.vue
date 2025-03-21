@@ -21,6 +21,7 @@ defineProps({
             </Link>
           </div>
         </div>
+        <button class="back-button" onclick="history.back()">戻る</button>
       </div>
     </section>
   </Layout>
