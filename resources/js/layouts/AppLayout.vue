@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import AppLayout from '@/layouts/app/AppSidebarLayout.vue';
 import Layout from '@/mycomponents/layouts/Layout.vue';
 import type { BreadcrumbItemType } from '@/types';
 
@@ -19,3 +18,5 @@ withDefaults(defineProps<Props>(), {
     <!-- </AppLayout> -->
   </Layout>
 </template>
+
+

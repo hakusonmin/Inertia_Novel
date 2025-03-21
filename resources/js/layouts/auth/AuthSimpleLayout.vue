@@ -9,8 +9,9 @@ defineProps<{
 </script>
 
 <template>
-    <div class="">
-        <div class="w-full max-w-sm">
+    <div>
+        <!-- ↓中央揃え対応 ここpaddingじゃないとだめ-->
+        <div class="max-w-[400px] py-[30px] mx-auto">
             <div class=" flex flex-col gap-8">
                 <div class=" flex flex-col items-center gap-4">
                     <Link :href="route('home')" class="flex flex-col items-center gap-2 font-medium">

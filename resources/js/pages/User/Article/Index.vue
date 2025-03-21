@@ -4,7 +4,7 @@ import { Link } from '@inertiajs/vue3';
 import { defineProps } from 'vue';
 
 defineProps({
-  novels: Array,
+  articles: Array,
 });
 </script>
 
@@ -12,15 +12,16 @@ defineProps({
   <Layout>
     <section class="content">
       <div class="wrapper">
-        <h1>小説一覧</h1>
+        <h1>話一覧</h1>
         <div class="card-container">
-          <div class="card" v-for="novel in novels" :key="novel.id">
-            <Link :href="route('chapters.index', { novel: novel.id })" as="a">
+          <div class="card" v-for="article in articles" :key="article.id">
+            <Link :href="route('articles.show', { chapter: article.chapter.id, article: article.id })" as="a">
               <img class="image" src="/images/Thumbnail.png" />
-              <div class="card-title">{{ novel.title }}</div>
+              <div class="card-title">{{ article.title }}</div>
             </Link>
           </div>
         </div>
+        <button class="back-button" onclick="history.back()">戻る</button>
       </div>
     </section>
   </Layout>

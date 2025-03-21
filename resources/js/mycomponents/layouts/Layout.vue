@@ -1,6 +1,5 @@
 <template>
-  <div class="layout-container">
-    <!-- ヘッダー -->
+  <div>
     <header>
       <div class="header-container">
         <h2 class="site-title">
@@ -18,7 +17,7 @@
               <Link href="/">ユーザーホーム</Link>
             </li>
             <li>
-              <Link :href="route('logout')" method="post" as="button"> Log out </Link>
+              <Link :href="route('logout')" method="post" class="link">ログアウト</Link>
             </li>
           </ul>
         </nav>
@@ -75,19 +74,10 @@ onMounted(() => {
 </style>
 
 <style scoped>
-.layout-container {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
-
 .main-wrapper {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   width: 100%;
   background-color: rgb(233,229,222);
+  min-height: 65vh;
 }
 
 header {
@@ -126,6 +116,10 @@ nav ul li {
 
 nav ul li a {
   color: rgb(195, 195, 195);
+}
+
+.link {
+color: rgb(195, 195, 195);
 }
 
 .line {

@@ -4,16 +4,20 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Models\Chapter;
+use App\Models\Novel;
+use Auth;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class ChapterController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Novel $novel)
     {
-        //
+        $chapters = Chapter::where('novel_id', $novel->id)->get();;
+        return Inertia::render('User/Chapter/Index', ['chapters' => $chapters]);
     }
 
     /**

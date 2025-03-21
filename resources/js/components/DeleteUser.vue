@@ -43,11 +43,11 @@ const closeModal = () => {
 </script>
 
 <template>
-  <div class="space-y-6">
+  <div class="space-y-6 mt-6">
     <HeadingSmall title="アカウント削除" description="" />
     <Dialog>
       <DialogTrigger as-child>
-        <Button variant="destructive">削除する</Button>
+        <Button variant="destructive" class="bg-black">削除する</Button>
       </DialogTrigger>
       <DialogContent>
         <form class="space-y-6" @submit="deleteUser">

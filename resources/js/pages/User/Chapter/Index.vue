@@ -4,23 +4,25 @@ import { Link } from '@inertiajs/vue3';
 import { defineProps } from 'vue';
 
 defineProps({
-  novels: Array,
+  chapters: Array,
 });
+
 </script>
 
 <template>
   <Layout>
     <section class="content">
       <div class="wrapper">
-        <h1>小説一覧</h1>
+        <h1>章一覧</h1>
         <div class="card-container">
-          <div class="card" v-for="novel in novels" :key="novel.id">
-            <Link :href="route('chapters.index', { novel: novel.id })" as="a">
+          <div class="card" v-for="chapter in chapters" :key="chapter.id">
+            <Link :href="route('articles.index', { chapter: chapter.id })" as="a">
               <img class="image" src="/images/Thumbnail.png" />
-              <div class="card-title">{{ novel.title }}</div>
+              <div class="card-title">{{ chapter.title }}</div>
             </Link>
           </div>
         </div>
+        <button class="back-button" onclick="history.back()">戻る</button>
       </div>
     </section>
   </Layout>

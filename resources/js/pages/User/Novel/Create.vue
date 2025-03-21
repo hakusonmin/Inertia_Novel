@@ -21,6 +21,7 @@ const submit = () => {
         <br />
         <button type="submit">作成</button>
       </form>
+      <button class="back-button" onclick="history.back()">戻る</button>
     </div>
   </Layout>
 </template>

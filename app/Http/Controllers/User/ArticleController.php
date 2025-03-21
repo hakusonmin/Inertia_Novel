@@ -4,16 +4,23 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Models\Article;
+use App\Models\Chapter;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 
 class ArticleController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Chapter $chapter)
     {
-        //
+        $articles = Article::query()
+            ->with('chapter')
+            ->where('chapter_id', $chapter->id)
+            ->get();
+
+        return Inertia::render('User/Article/Index', ['articles' => $articles]);
     }
 
     /**
@@ -35,9 +42,11 @@ class ArticleController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Article $article)
+    // ↓ここ 変数の順番大事です
+    public function show(Chapter $chapter, Article $article)
     {
-        //
+        $article = Article::find($article->id);
+        return Inertia::render('User/Article/Show', ['article' => $article]);
     }
 
     /**

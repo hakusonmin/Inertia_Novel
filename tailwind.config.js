@@ -74,4 +74,8 @@ export default {
         },
     },
     plugins: [require('tailwindcss-animate')],
+    // corePlugins: {
+    //     preflight: false,
+    // },
 };
+

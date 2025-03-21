@@ -29,7 +29,8 @@ const currentPath = page.props.ziggy?.location ? new URL(page.props.ziggy.locati
     <div class="px-4 py-6">
         <!-- <Heading title="Settings" description="Manage your profile and account settings" /> -->
 
-        <div class="flex flex-col space-y-8 md:space-y-0 lg:flex-row lg:space-x-12 lg:space-y-0">
+        <!-- 中央揃え対応 -->
+        <div class="max-w-[600px] mx-auto flex flex-col space-y-8 md:space-y-0 lg:flex-row lg:space-x-12 lg:space-y-0">
             <aside class="w-full max-w-xl lg:w-48">
                 <nav class="flex flex-col space-x-0 space-y-1">
                     <Button
