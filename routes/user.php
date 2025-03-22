@@ -11,7 +11,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('dashboard', function () {
         return Inertia::render('Dashboard');
     })->name('dashboard');
+});
 
+Route::middleware(['auth'])->prefix('user')->name('user.')->group(function () {
     Route::resource('novels', NovelController::class);
 
     Route::prefix('novels/{novel}')->group(function () {

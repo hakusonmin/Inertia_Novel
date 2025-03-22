@@ -16,15 +16,9 @@ import { Link } from '@inertiajs/vue3';
             </Link>
           </div>
           <div class="card">
-            <Link as="a" :href="route('novels.index')">
+            <Link as="a" :href="route('guest.novels.index')">
               <img class="image" src="/images/Thumbnail.png" />
               <div class="card-title">小説一覧画面へ</div>
-            </Link>
-          </div>
-          <div class="card">
-            <Link as="a" :href="route('novels.create')">
-              <img class="image" src="/images/Thumbnail.png" />
-              <div class="card-title">新規小説作成</div>
             </Link>
           </div>
         </div>

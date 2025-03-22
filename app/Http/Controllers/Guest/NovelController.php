@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\User;
+namespace App\Http\Controllers\Guest;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreNovelRequest;
@@ -16,11 +16,8 @@ class NovelController extends Controller
      */
     public function index()
     {
-        $id = Auth::id();
-        $novels = Novel::query()
-            ->where('user_id',$id)
-            ->get();
-        return Inertia::render('User/Novel/Index', ['novels' => $novels]);
+        $novels = Novel::all();
+        return Inertia::render('Guest/Novel/Index', ['novels' => $novels]);
     }
 
     /**
@@ -28,7 +25,7 @@ class NovelController extends Controller
      */
     public function create()
     {
-        return Inertia::render('User/Novel/Create');
+        //
     }
 
     /**
@@ -36,11 +33,7 @@ class NovelController extends Controller
      */
     public function store(StoreNovelRequest $request)
     {
-        Novel::create([
-            'title' => $request->title,
-            'user_id' => Auth::id(),
-        ]);
-        return redirect()->route('user.novels.index')->with('success', '小説を作成しました');
+        //
     }
 
     /**
@@ -65,7 +58,7 @@ class NovelController extends Controller
     public function update(UpdateNovelRequest $request, Novel $novel)
     {
         $novel->update($request->validated());
-        return redirect()->route('user.novels.index')->with('success', '小説を更新しました');
+        return redirect()->route('novels.index')->with('success', '小説を更新しました');
     }
 
     /**
@@ -74,6 +67,6 @@ class NovelController extends Controller
     public function destroy(Novel $novel)
     {
         $novel->delete();
-        return redirect()->route('user.novels.index')->with('success', '小説を削除しました');
+        return redirect()->route('novels.index')->with('success', '小説を削除しました');
     }
 }

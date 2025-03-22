@@ -5,6 +5,7 @@ import path from 'path';
 import tailwindcss from 'tailwindcss';
 import { resolve } from 'node:path';
 import { defineConfig } from 'vite';
+import terser from '@rollup/plugin-terser';
 
 export default defineConfig({
     plugins: [
@@ -34,6 +35,16 @@ export default defineConfig({
         },
     },
     build: {
-        sourcemap: true,  
+        sourcemap: true,
+        rollupOptions: {
+            plugins: [
+              terser({
+                compress: {
+                  drop_console: true,
+                  drop_debugger: true,
+                }
+              })
+            ]
+          }
     },
 });

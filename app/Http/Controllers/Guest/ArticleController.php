@@ -1,26 +1,26 @@
 <?php
 
-namespace App\Http\Controllers\User;
+namespace App\Http\Controllers\Guest;
 
 use App\Http\Controllers\Controller;
+use App\Models\Article;
 use App\Models\Chapter;
-use App\Models\Novel;
-use Auth;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
-class ChapterController extends Controller
+class ArticleController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index(Novel $novel)
+    public function index(Chapter $chapter)
     {
-        $chapters = Chapter::query()
-            ->with('novel')
-            ->where('novel_id', $novel->id)
+        $articles = Article::query()
+            ->with('chapter')
+            ->where('chapter_id', $chapter->id)
             ->get();
-        return Inertia::render('User/Chapter/Index', ['chapters' => $chapters]);
+
+        return Inertia::render('Guest/Article/Index', ['articles' => $articles]);
     }
 
     /**
@@ -28,7 +28,7 @@ class ChapterController extends Controller
      */
     public function create()
     {
-        return Inertia::render('User/Chapter/Create');
+        //
     }
 
     /**
@@ -42,15 +42,17 @@ class ChapterController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Chapter $chapter)
+    // ↓ここ 変数の順番大事です
+    public function show(Chapter $chapter, Article $article)
     {
-        //
+        $article = Article::find($article->id);
+        return Inertia::render('Guest/Article/Show', ['article' => $article]);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Chapter $chapter)
+    public function edit(Article $article)
     {
         //
     }
@@ -58,7 +60,7 @@ class ChapterController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Chapter $chapter)
+    public function update(Request $request, Article $article)
     {
         //
     }
@@ -66,7 +68,7 @@ class ChapterController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Chapter $chapter)
+    public function destroy(Article $article)
     {
         //
     }

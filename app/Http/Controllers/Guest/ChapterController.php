@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\User;
+namespace App\Http\Controllers\Guest;
 
 use App\Http\Controllers\Controller;
 use App\Models\Chapter;
@@ -16,11 +16,8 @@ class ChapterController extends Controller
      */
     public function index(Novel $novel)
     {
-        $chapters = Chapter::query()
-            ->with('novel')
-            ->where('novel_id', $novel->id)
-            ->get();
-        return Inertia::render('User/Chapter/Index', ['chapters' => $chapters]);
+        $chapters = Chapter::where('novel_id', $novel->id)->get();;
+        return Inertia::render('Guest/Chapter/Index', ['chapters' => $chapters]);
     }
 
     /**
@@ -28,7 +25,7 @@ class ChapterController extends Controller
      */
     public function create()
     {
-        return Inertia::render('User/Chapter/Create');
+        //
     }
 
     /**

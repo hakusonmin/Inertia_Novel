@@ -2,10 +2,18 @@
 import Layout from '@/mycomponents/layouts/Layout.vue';
 import { Link } from '@inertiajs/vue3';
 import { defineProps } from 'vue';
+import { router } from '@inertiajs/vue3'
 
-defineProps({
+const props = defineProps({
   novels: Array,
 });
+
+const handleDelete = (id) => {
+  router.delete(route('user.novels.destroy', { novel: id }), {
+      onBefore: () => confirm('本当に削除しますか？')
+  })
+}
+
 </script>
 
 <template>
@@ -15,13 +23,18 @@ defineProps({
         <h1>小説一覧</h1>
         <div class="card-container">
           <div class="card" v-for="novel in novels" :key="novel.id">
-            <Link :href="route('chapters.index', { novel: novel.id })" as="a">
+            <Link :href="route('user.chapters.index', { novel: novel.id })" as="a">
               <img class="image" src="/images/Thumbnail.png" />
               <div class="card-title">{{ novel.title }}</div>
             </Link>
+            <div class="mutation-link-wrapper">
+              <Link :href="route('user.novels.edit', { novel: novel.id })" class="mutation-link">編集</Link>
+              <button type="button" class="mutation-link" @click="handleDelete(novel.id)" >削除</button>
+            </div>
           </div>
         </div>
-        <button class="back-button" onclick="history.back()">戻る</button>
+        <Link as="button" class="move-button" :href="route('user.novels.create')">新規小説作成</Link>
+        <button class="move-button" onclick="history.back()">戻る</button>
       </div>
     </section>
   </Layout>
@@ -106,8 +119,8 @@ body {
   font-size: 13px;
 }
 
-.back-button {
-  margin: 30px auto 20px auto;
+.move-button {
+  margin: 20px;
   appearance: none;
   padding: 8px 16px;
   font-weight: 150;
