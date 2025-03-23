@@ -9,6 +9,13 @@ html, body {
     background-color: rgb(67,67,67);
 }
 
+:root {
+    --black: rgb(67, 67, 67);
+    --light-gray: rgb(233, 229, 222);
+    --white: rgb(255, 255, 255);
+    --font-black: rgb(87, 87, 87);
+}
+
 body,
 html {
     --font-sans:

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Layout from '@/mycomponents/layouts/Layout.vue';
+import BaseLayout from '@/mycomponents/layouts/BaseLayout.vue';
 import type { BreadcrumbItemType } from '@/types';
 
 interface Props {
@@ -12,11 +12,11 @@ withDefaults(defineProps<Props>(), {
 </script>
 
 <template>
-  <Layout>
+  <BaseLayout>
     <!-- <AppLayout :breadcrumbs="breadcrumbs"> -->
       <slot />
     <!-- </AppLayout> -->
-  </Layout>
+  </BaseLayout>
 </template>
 
 

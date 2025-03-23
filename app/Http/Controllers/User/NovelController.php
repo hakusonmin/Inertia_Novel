@@ -40,7 +40,7 @@ class NovelController extends Controller
             'title' => $request->title,
             'user_id' => Auth::id(),
         ]);
-        return redirect()->route('user.novels.index')->with('success', '小説を作成しました');
+        return redirect()->route('user.novels.index')->with(['message' => '小説を作成しました', 'status' => 'success']);
     }
 
     /**
@@ -56,7 +56,7 @@ class NovelController extends Controller
      */
     public function edit(Novel $novel)
     {
-        //
+        return Inertia::render('User/Novel/Edit', ['novel' => $novel]);
     }
 
     /**
@@ -65,7 +65,7 @@ class NovelController extends Controller
     public function update(UpdateNovelRequest $request, Novel $novel)
     {
         $novel->update($request->validated());
-        return redirect()->route('user.novels.index')->with('success', '小説を更新しました');
+        return redirect()->route('user.novels.index')->with(['message' => '小説を更新しました', 'status' => 'success']);
     }
 
     /**
@@ -74,6 +74,6 @@ class NovelController extends Controller
     public function destroy(Novel $novel)
     {
         $novel->delete();
-        return redirect()->route('user.novels.index')->with('success', '小説を削除しました');
+        return redirect()->route('user.novels.index')->with(['message' => '小説を削除しました', 'status' => 'success']);
     }
 }

@@ -1,8 +1,7 @@
 <script setup>
-import Layout from '@/mycomponents/layouts/Layout.vue';
-import { Link } from '@inertiajs/vue3';
-import { onMounted, defineProps } from 'vue';
-import { router } from '@inertiajs/vue3'
+import ListLayout from '@/mycomponents/layouts/ListLayout.vue';
+import { Link, router } from '@inertiajs/vue3';
+import { defineProps, onMounted } from 'vue';
 
 const props = defineProps({
   chapters: Array,
@@ -15,33 +14,29 @@ onMounted(() => {
 
 const handleDelete = (id) => {
   router.delete(route('user.chapters.destroy', { novel: id }), {
-      onBefore: () => confirm('本当に削除しますか？')
-  })
-}
+    onBefore: () => confirm('本当に削除しますか？'),
+  });
+};
 </script>
 
 <template>
-  <Layout>
-    <section class="content">
-      <div class="wrapper">
-        <h1>小説一覧</h1>
-        <div class="card-container">
-          <div class="card" v-for="chapter in chapters" :key="chapter.id">
-            <Link :href="route('user.articles.index', { chapter: chapter.id })" as="a">
-              <img class="image" src="/images/Thumbnail.png" />
-              <div class="card-title">{{ chapter.title }}</div>
-            </Link>
-            <div class="mutation-link-wrapper">
-              <Link :href="route('user.chapters.edit', { novel: chapter.novel.id, chapter: chapter.id })" class="mutation-link">編集</Link>
-              <button type="button" class="mutation-link" @click="handleDelete(chapter.id)" >削除</button>
-            </div>
-          </div>
+  <ListLayout>
+    <h1>小説一覧</h1>
+    <div class="card-container">
+      <div class="card" v-for="chapter in chapters" :key="chapter.id">
+        <Link :href="route('user.articles.index', { chapter: chapter.id })" as="a">
+          <img class="image" src="/images/Thumbnail.png" />
+          <div class="card-title">{{ chapter.title }}</div>
+        </Link>
+        <div class="mutation-link-wrapper">
+          <Link :href="route('user.chapters.edit', { novel: chapter.novel.id, chapter: chapter.id })" class="mutation-link">編集</Link>
+          <button type="button" class="mutation-link" @click="handleDelete(chapter.id)">削除</button>
         </div>
-        <Link as="button" class="move-button" :href="route('user.chapters.create', { novel: chapters[0].novel.id })">新規小説作成</Link>
-        <button class="move-button" onclick="history.back()">戻る</button>
       </div>
-    </section>
-  </Layout>
+    </div>
+    <Link as="button" class="move-button" :href="route('user.chapters.create', { novel: chapters[0].novel.id })">新規小説作成</Link>
+    <button class="move-button" onclick="history.back()">戻る</button>
+  </ListLayout>
 </template>
 
 <style>

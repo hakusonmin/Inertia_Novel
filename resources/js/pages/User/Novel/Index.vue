@@ -1,8 +1,8 @@
 <script setup>
-import Layout from '@/mycomponents/layouts/Layout.vue';
-import { Link } from '@inertiajs/vue3';
+import LinkButton from '@/mycomponents/components/Buttons/LinkButton.vue';
+import ListLayout from '@/mycomponents/layouts/ListLayout.vue';
+import { Link, router } from '@inertiajs/vue3';
 import { defineProps } from 'vue';
-import { router } from '@inertiajs/vue3'
 
 const props = defineProps({
   novels: Array,
@@ -10,51 +10,33 @@ const props = defineProps({
 
 const handleDelete = (id) => {
   router.delete(route('user.novels.destroy', { novel: id }), {
-      onBefore: () => confirm('本当に削除しますか？')
-  })
-}
-
+    onBefore: () => confirm('本当に削除しますか？'),
+  });
+};
 </script>
 
 <template>
-  <Layout>
-    <section class="content">
-      <div class="wrapper">
-        <h1>小説一覧</h1>
-        <div class="card-container">
-          <div class="card" v-for="novel in novels" :key="novel.id">
-            <Link :href="route('user.chapters.index', { novel: novel.id })" as="a">
-              <img class="image" src="/images/Thumbnail.png" />
-              <div class="card-title">{{ novel.title }}</div>
-            </Link>
-            <div class="mutation-link-wrapper">
-              <Link :href="route('user.novels.edit', { novel: novel.id })" class="mutation-link">編集</Link>
-              <button type="button" class="mutation-link" @click="handleDelete(novel.id)" >削除</button>
-            </div>
-          </div>
+  <ListLayout>
+    <h1>小説一覧</h1>
+    <div class="card-container">
+      <div class="card" v-for="novel in novels" :key="novel.id">
+        <Link :href="route('user.chapters.index', { novel: novel.id })" as="a">
+          <img class="image" src="/images/Thumbnail.png" />
+          <div class="card-title">{{ novel.title }}</div>
+        </Link>
+        <div class="mutation-link-wrapper">
+          <Link :href="route('user.novels.edit', { novel: novel.id })" class="mutation-link">編集</Link>
+          <button type="button" class="mutation-link" @click="handleDelete(novel.id)">削除</button>
         </div>
-        <Link as="button" class="move-button" :href="route('user.novels.create')">新規小説作成</Link>
-        <button class="move-button" onclick="history.back()">戻る</button>
       </div>
-    </section>
-  </Layout>
+    </div>
+    <LinkButton href="/user/novels/create">新規小説作成</LinkButton>
+    <button class="move-button" onclick="history.back()">戻る</button>
+  </ListLayout>
 </template>
 
-<style>
-:root {
-  --black: rgb(67, 67, 67);
-  --light-gray: rgb(233, 229, 222);
-  --white: rgb(255, 255, 255);
-  --font-black: rgb(87, 87, 87);
-}
-</style>
 
 <style scoped>
-body {
-  background-color: var(--black);
-  margin: 0; /*超大事*/
-}
-
 .content {
   background-color: var(--light-gray);
   padding: 20px; /*このパディングないとちゃんと動きません*/

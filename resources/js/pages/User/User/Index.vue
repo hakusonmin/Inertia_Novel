@@ -1,10 +1,10 @@
 <script setup>
-import Layout from '@/mycomponents/layouts/Layout.vue';
+import BaseLayout from '@/mycomponents/layouts/BaseLayout.vue';
 import { Link } from '@inertiajs/vue3';
 </script>
 
 <template>
-  <Layout>
+  <BaseLayout>
     <section class="content">
       <div class="wrapper">
         <h1>ユーザー管理ページ</h1>
@@ -25,17 +25,8 @@ import { Link } from '@inertiajs/vue3';
         <button class="back-button" onclick="history.back()">戻る</button>
       </div>
     </section>
-  </Layout>
+  </BaseLayout>
 </template>
-
-<style>
-:root {
-  --black: rgb(67, 67, 67);
-  --light-gray: rgb(233, 229, 222);
-  --white: rgb(255, 255, 255);
-  --font-black: rgb(87, 87, 87);
-}
-</style>
 
 <style scoped>
 body {
