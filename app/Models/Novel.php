@@ -10,7 +10,7 @@ class Novel extends Model
     /** @use HasFactory<\Database\Factories\NovelFactory> */
     use HasFactory;
 
-    protected $fillable = ['user_id', 'title'];
+    protected $fillable = ['user_id', 'title', 'novel_id'];
 
     public function chapters()
     {

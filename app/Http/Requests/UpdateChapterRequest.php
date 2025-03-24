@@ -23,7 +23,6 @@ class UpdateChapterRequest extends FormRequest
     {
         return [
             'title' => 'required|string|max:255',
-            'novel_id' => 'required|exists:novels,id',
         ];
     }
 }

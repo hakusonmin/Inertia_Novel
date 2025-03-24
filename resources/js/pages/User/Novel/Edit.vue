@@ -1,19 +1,19 @@
 <template>
-  <FormLayout title="小説編集">
+  <FormLayout>
+    <HeaderTitle title="小説編集" />
     <form @submit.prevent="submit">
       <InputField label="小説名" v-model="form.title" />
-      <button class="g-button" type="submit">更新</button>
+      <SubmitButton>更新</SubmitButton>
       <BackButton />
     </form>
   </FormLayout>
 </template>
 
-<style scoped>
-</style>
-
 <script setup>
 import BackButton from '@/mycomponents/components/Buttons/BackButton.vue';
+import SubmitButton from '@/mycomponents/components/Buttons/SubmitButton.vue';
 import InputField from '@/mycomponents/components/Forms/InputField.vue';
+import HeaderTitle from '@/mycomponents/components/Styles/HeaderTitle.vue';
 import FormLayout from '@/mycomponents/layouts/FormLayout.vue';
 import { useForm } from '@inertiajs/vue3';
 import { usePage } from '@inertiajs/vue3';
@@ -30,3 +30,6 @@ const submit = () => {
   form.put(route('user.novels.update', props.novel.id));
 };
 </script>
+
+<style scoped>
+</style>

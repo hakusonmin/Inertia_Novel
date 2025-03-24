@@ -8,7 +8,7 @@
           <CardTitle >{{ novel.title }}</CardTitle>
         </CardLink>
         <MutateWrapper>
-          <MutateButton :href="route('user.novels.edit', { novel: novel.id })" class="mutation-link">編集</MutateButton>
+          <EditButton :href="route('user.novels.edit', { novel: novel.id })" as="button">編集</EditButton>
           <MutateButton @click="handleDelete(novel.id)">削除</MutateButton>
         </MutateWrapper>
       </Card>
@@ -19,19 +19,20 @@
 </template>
 
 <script setup>
-import ListLayout from '@/mycomponents/layouts/ListLayout.vue';
 import { router } from '@inertiajs/vue3';
 import { defineProps } from 'vue';
+import ListLayout from '@/mycomponents/layouts/ListLayout.vue';
 import BackButton from '@/mycomponents/components/Buttons/BackButton.vue';
 import CardLink from '@/mycomponents/components/Buttons/CardLink.vue';
-import MutateButton from '@/mycomponents/components/Buttons/MutateButton.vue';
-import LinkButton from '@/mycomponents/components/Buttons/LinkButton.vue';
+import MutateButton from '@/mycomponents/components/Buttons/EditButton.vue';
 import CardContainer from '@/mycomponents/components/Cards/CardContainer.vue';
 import CardImage from '@/mycomponents/components/Cards/CardImage.vue';
 import CardTitle from '@/mycomponents/components/Cards/CardTitle.vue';
 import Card from '@/mycomponents/components/Cards/Card.vue';
 import MutateWrapper from '@/mycomponents/components/Cards/MutateWrapper.vue';
 import HeaderTitle from '@/mycomponents/components/Styles/HeaderTitle.vue';
+import EditButton from '@/mycomponents/components/Buttons/EditButton.vue';
+import LinkButton from '@/mycomponents/components/Buttons/LinkButton.vue';
 
 const props = defineProps({
   novels: Array,
@@ -44,4 +45,5 @@ const handleDelete = (id) => {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+</style>

@@ -40,7 +40,9 @@ class NovelController extends Controller
             'title' => $request->title,
             'user_id' => Auth::id(),
         ]);
-        return redirect()->route('user.novels.index')->with(['message' => '小説を作成しました', 'status' => 'success']);
+        return redirect()
+            ->route('user.novels.index')
+            ->with(['message' => '小説を作成しました', 'status' => 'success']);
     }
 
     /**
@@ -65,7 +67,9 @@ class NovelController extends Controller
     public function update(UpdateNovelRequest $request, Novel $novel)
     {
         $novel->update($request->validated());
-        return redirect()->route('user.novels.index')->with(['message' => '小説を更新しました', 'status' => 'success']);
+        return redirect()
+            ->route('user.novels.index')
+            ->with(['message' => '小説を更新しました', 'status' => 'success']);
     }
 
     /**

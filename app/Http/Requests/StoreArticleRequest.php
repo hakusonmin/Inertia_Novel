@@ -24,7 +24,6 @@ class StoreArticleRequest extends FormRequest
         return [
             'title' => 'required|string|max:255',
             'content' => 'required|string',
-            'chapter_id' => 'required|exists:chapters,id',
         ];
     }
 }

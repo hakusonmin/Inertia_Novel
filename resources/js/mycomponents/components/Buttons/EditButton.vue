@@ -1,13 +1,16 @@
-<script setup></script>
+<script setup>
+import { Link } from '@inertiajs/vue3';
+
+</script>
 
 <template>
-  <button class="mutate-button">
+  <Link class="edit-button">
     <slot />
-  </button>
+  </Link>
 </template>
 
 <style scoped>
-.mutate-button {
+.edit-button {
   display: inline-block;
   color: var(--white);
   background-color: var(--black);
@@ -17,3 +20,4 @@
   font-size: 13px;
 }
 </style>
+
