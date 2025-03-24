@@ -29,6 +29,21 @@ class ChapterSeeder extends Seeder
                 'title' => 'chapter_hoge3',
                 'novel_id' => 1,
             ],
+            [
+                'id' => 4,
+                'title' => 'chapter_hoge4',
+                'novel_id' => 2,
+            ],
+            [
+                'id' => 5,
+                'title' => 'chapter_hoge5',
+                'novel_id' => 2,
+            ],
+            [
+                'id' => 6,
+                'title' => 'chapter_hoge6',
+                'novel_id' => 2,
+            ],
         ]);
     }
 }

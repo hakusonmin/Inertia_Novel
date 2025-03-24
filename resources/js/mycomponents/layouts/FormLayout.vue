@@ -6,7 +6,7 @@ import BaseLayout from './BaseLayout.vue';
   <BaseLayout>
     <section class="content">
       <div class="wrapper">
-        <slot />
+        <slot name="default"/>
       </div>
     </section>
   </BaseLayout>

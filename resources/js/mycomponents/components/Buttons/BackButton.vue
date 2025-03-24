@@ -30,11 +30,11 @@
 
   <style scoped>
   .back-button {
-    padding: 8px 16px;
+    appearance: none;
     margin: 10px;
+    padding: 8px 16px;
+    color: var(--white);
     background-color: var(--black);
-    color: white;
-    border: none;
   }
 
   </style>

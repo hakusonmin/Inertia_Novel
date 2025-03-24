@@ -1,7 +1,7 @@
 <script setup>
 import BackButton from '@/mycomponents/components/Buttons/BackButton.vue';
 import InputField from '@/mycomponents/components/Forms/InputField.vue';
-import Title from '@/mycomponents/components/Styles/Title.vue';
+import Title from '@/mycomponents/components/Styles/HeaderTitle.vue';
 import FormLayout from '@/mycomponents/layouts/FormLayout.vue';
 import { useForm } from '@inertiajs/vue3';
 
@@ -17,11 +17,10 @@ const submit = () => {
 </script>
 
 <template>
-  <FormLayout>
-    <Title title="小説新規作成" />
+  <FormLayout title="小説一覧">
     <form @submit.prevent="submit">
       <InputField label="小説名" v-model="form.title" />
-      <SubmitButton label="作成" />
+      <button class="g-button" type="submit">作成</button>
       <BackButton />
     </form>
   </FormLayout>
