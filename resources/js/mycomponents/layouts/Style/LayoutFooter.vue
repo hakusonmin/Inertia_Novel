@@ -3,7 +3,7 @@
 <template>
   <footer>
     <div class="footer-container">
-      <h3>フッターです</h3>
+      <h3 class="m-6">小説投稿サイト</h3>
     </div>
   </footer>
 </template>

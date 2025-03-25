@@ -78,6 +78,8 @@ class NovelController extends Controller
     public function destroy(Novel $novel)
     {
         $novel->delete();
-        return redirect()->route('user.novels.index')->with(['message' => '小説を削除しました', 'status' => 'success']);
+        return redirect()
+            ->route('user.novels.index')
+            ->with(['message' => '小説を削除しました', 'status' => 'success']);
     }
 }

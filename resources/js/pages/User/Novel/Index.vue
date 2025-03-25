@@ -9,7 +9,7 @@
         </CardLink>
         <MutateWrapper>
           <EditButton :href="route('user.novels.edit', { novel: novel.id })" as="button">編集</EditButton>
-          <MutateButton @click="handleDelete(novel.id)">削除</MutateButton>
+          <DeleteButton @click="handleDelete(novel.id)">削除</DeleteButton>
         </MutateWrapper>
       </Card>
     </CardContainer>
@@ -24,7 +24,6 @@ import { defineProps } from 'vue';
 import ListLayout from '@/mycomponents/layouts/ListLayout.vue';
 import BackButton from '@/mycomponents/components/Buttons/BackButton.vue';
 import CardLink from '@/mycomponents/components/Buttons/CardLink.vue';
-import MutateButton from '@/mycomponents/components/Buttons/EditButton.vue';
 import CardContainer from '@/mycomponents/components/Cards/CardContainer.vue';
 import CardImage from '@/mycomponents/components/Cards/CardImage.vue';
 import CardTitle from '@/mycomponents/components/Cards/CardTitle.vue';
@@ -33,6 +32,7 @@ import MutateWrapper from '@/mycomponents/components/Cards/MutateWrapper.vue';
 import HeaderTitle from '@/mycomponents/components/Styles/HeaderTitle.vue';
 import EditButton from '@/mycomponents/components/Buttons/EditButton.vue';
 import LinkButton from '@/mycomponents/components/Buttons/LinkButton.vue';
+import DeleteButton from '@/mycomponents/components/Buttons/DeleteButton.vue';
 
 const props = defineProps({
   novels: Array,

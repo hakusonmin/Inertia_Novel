@@ -16,11 +16,11 @@ Route::middleware(['auth'])->group(function () {
 Route::middleware(['auth'])->prefix('user')->name('user.')->group(function () {
     Route::resource('novels', NovelController::class);
 
-    Route::prefix('novels/{novel}')->group(function () {
+    Route::prefix('novels/{novel}')->scopeBindings()->group(function () {
         Route::resource('chapters', ChapterController::class);
     });
 
-    Route::prefix('chapters/{chapter}')->group(function () {
+    Route::prefix('chapters/{chapter}')->scopeBindings()->group(function () {
         Route::resource('articles', ArticleController::class);
     });
 

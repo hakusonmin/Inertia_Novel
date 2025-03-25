@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreChapterRequest;
 use App\Models\Chapter;
 use App\Models\Novel;
-use Auth;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -21,7 +20,8 @@ class ChapterController extends Controller
             ->with('novel')
             ->where('novel_id', $novel->id)
             ->get();
-        return Inertia::render('User/Chapter/Index', ['chapters' => $chapters]);
+
+        return Inertia::render('User/Chapter/Index', [ 'novel' => $novel, 'chapters' => $chapters]);
     }
 
     /**
@@ -43,7 +43,7 @@ class ChapterController extends Controller
         $model->save();
 
         return redirect()
-            ->route('user.chapters.index', ['novel' => $novel->id])
+            ->route('user.chapters.index', ['novel' => $novel])
             ->with(['message' => '章を作成しました', 'status' => 'success']);
     }
 
@@ -75,7 +75,7 @@ class ChapterController extends Controller
         $model->save();
 
         return redirect()
-            ->route('user.chapters.index', ['novel' => $novel->id])
+            ->route('user.chapters.index', ['novel' => $novel])
             ->with(['message' => '小説を更新しました', 'status' => 'success']);
     }
 
@@ -84,6 +84,9 @@ class ChapterController extends Controller
      */
     public function destroy(Novel $novel, Chapter $chapter)
     {
-        //
+        $chapter->delete();
+        return redirect()
+            ->route('user.chapters.index', ['novel' => $novel])
+            ->with(['message' => '小説を削除しました', 'status' => 'success']);
     }
 }
