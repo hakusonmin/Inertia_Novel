@@ -20,7 +20,7 @@ import ListLayout from '@/mycomponents/layouts/ListLayout.vue';
         </CardLink>
       </Card>
       <Card>
-        <CardLink as="a" :href="route('guest.novels.index')">
+        <CardLink as="a" :href="route('user.novels.index')">
           <CardImage src="/images/Thumbnail.png" />
           <CardTitle class="text-[16px] font-medium">小説一覧画面へ</CardTitle>
         </CardLink>

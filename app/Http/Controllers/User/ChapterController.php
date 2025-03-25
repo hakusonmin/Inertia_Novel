@@ -76,7 +76,7 @@ class ChapterController extends Controller
 
         return redirect()
             ->route('user.chapters.index', ['novel' => $novel])
-            ->with(['message' => '小説を更新しました', 'status' => 'success']);
+            ->with(['message' => '章を更新しました', 'status' => 'success']);
     }
 
     /**
@@ -87,6 +87,6 @@ class ChapterController extends Controller
         $chapter->delete();
         return redirect()
             ->route('user.chapters.index', ['novel' => $novel])
-            ->with(['message' => '小説を削除しました', 'status' => 'success']);
+            ->with(['message' => '章を削除しました', 'status' => 'success']);
     }
 }

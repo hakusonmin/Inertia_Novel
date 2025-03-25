@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import BackButton from '@/mycomponents/components/Buttons/BackButton.vue';
 import BaseLayout from '@/mycomponents/layouts/BaseLayout.vue';
 import type { BreadcrumbItemType } from '@/types';
 
@@ -14,9 +15,10 @@ withDefaults(defineProps<Props>(), {
 <template>
   <BaseLayout>
     <!-- <AppLayout :breadcrumbs="breadcrumbs"> -->
-      <slot />
+    <slot />
+    <div class="mx-auto max-w-36">
+      <BackButton />
+    </div>
     <!-- </AppLayout> -->
   </BaseLayout>
 </template>
-
-

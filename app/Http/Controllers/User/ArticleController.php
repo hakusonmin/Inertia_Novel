@@ -20,7 +20,7 @@ class ArticleController extends Controller
             ->where('chapter_id', $chapter->id)
             ->get();
 
-        return Inertia::render('User/Article/Index', ['articles' => $articles]);
+        return Inertia::render('User/Article/Index', [ 'chapter' => $chapter, 'articles' => $articles ]);
     }
 
     /**
