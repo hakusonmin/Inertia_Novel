@@ -18,4 +18,5 @@ import { defineProps } from 'vue';
 const props = defineProps({
   article: Object,
 });
+
 </script>
