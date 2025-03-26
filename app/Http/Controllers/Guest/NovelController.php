@@ -57,8 +57,7 @@ class NovelController extends Controller
      */
     public function update(UpdateNovelRequest $request, Novel $novel)
     {
-        $novel->update($request->validated());
-        return redirect()->route('novels.index')->with('success', '小説を更新しました');
+        //
     }
 
     /**
@@ -66,7 +65,6 @@ class NovelController extends Controller
      */
     public function destroy(Novel $novel)
     {
-        $novel->delete();
-        return redirect()->route('novels.index')->with('success', '小説を削除しました');
+        //
     }
 }

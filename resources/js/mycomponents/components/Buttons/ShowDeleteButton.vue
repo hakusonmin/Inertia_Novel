@@ -1,15 +1,14 @@
 <script setup>
-import { Link } from '@inertiajs/vue3';
 </script>
 
 <template>
-  <Link class="button" as="button">
+  <button class="delete-button">
     <slot />
-  </Link>
+  </button>
 </template>
 
 <style scoped>
-.button {
+.delete-button {
   margin: 10px;
   padding: 8px 16px;
   color: var(--white);

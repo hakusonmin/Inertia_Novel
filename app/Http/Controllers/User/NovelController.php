@@ -36,10 +36,11 @@ class NovelController extends Controller
      */
     public function store(StoreNovelRequest $request)
     {
-        Novel::create([
-            'title' => $request->title,
-            'user_id' => Auth::id(),
-        ]);
+        $model = new Novel();
+        $model->title = $request->title;
+        $model->user_id = Auth::id();
+        $model->save();
+
         return redirect()
             ->route('user.novels.index')
             ->with(['message' => '小説を作成しました', 'status' => 'success']);
@@ -66,7 +67,10 @@ class NovelController extends Controller
      */
     public function update(UpdateNovelRequest $request, Novel $novel)
     {
-        $novel->update($request->validated());
+        $model = $novel;
+        $model->title = $request->title;
+        $model->user_id = Auth::id();
+        $model->save();
         return redirect()
             ->route('user.novels.index')
             ->with(['message' => '小説を更新しました', 'status' => 'success']);

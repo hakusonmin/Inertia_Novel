@@ -8,7 +8,7 @@ const props = defineProps({
 <template>
   <div class="form-element-wrapper">
     <div class="form-element-wrapper-title">
-      <label :for="label">{{ label }}</label>
+      <label :for="label" readonly>{{ label }}</label>
     </div>
     <div class="form-element-wrapper-content">
       <textarea
@@ -16,6 +16,7 @@ const props = defineProps({
         type="text"
         v-model="modelValue"
         class="w-full border border-gray-300 p-2"
+        readonly
         required
       ></textarea>
     </div>
@@ -28,6 +29,7 @@ textarea {
   background-color: var(--light-gray);
   margin-bottom: 6px;
   border: 0.5px solid black;
+  height: 100%;
 }
 
 .form-element-wrapper {

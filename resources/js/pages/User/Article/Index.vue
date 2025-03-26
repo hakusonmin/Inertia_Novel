@@ -1,6 +1,6 @@
 <template>
     <ListLayout>
-      <HeaderTitle title="章一覧" />
+      <HeaderTitle title="話一覧" />
       <CardContainer>
         <Card v-for="article in articles" :key="article.id">
           <CardLink :href="route('user.articles.show', { chapter: article.chapter.id, article: article.id })" as="a">
